@@ -9,7 +9,8 @@ public class TargetFunction
     public decimal[] Coefficients { get; set; }
     public StrivesTo FunctionStrivesTo { get; set; }
 
-    public TargetFunction(string name = "F", StrivesTo strivesTo = StrivesTo.Min) {
+    public TargetFunction(string name = "F", StrivesTo strivesTo = StrivesTo.Min)
+    {
         Name = name;
         FunctionStrivesTo = strivesTo;
         Coefficients = [];
@@ -37,6 +38,18 @@ public class TargetFunction
         {
             string[] parts = stringCoefficient.Split('x');
             Coefficients[Convert.ToInt32(parts[1]) - 1] = Convert.ToDecimal(parts[0]);
+        }
+    }
+
+    public void MakeStandart()
+    {
+        if (FunctionStrivesTo == StrivesTo.Min)
+        {
+            FunctionStrivesTo = StrivesTo.Max;
+            for (int i = 0; i < Coefficients.Length; i++)
+            {
+                Coefficients[i] *= -1;
+            }
         }
     }
 

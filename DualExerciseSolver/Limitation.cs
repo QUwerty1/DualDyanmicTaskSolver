@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -49,6 +50,19 @@ public class Limitation
         {
             string[] coefParts = stringCoefficent.Trim().Split('x');
             Coefficients[Convert.ToInt32(coefParts[1]) - 1] = Convert.ToDecimal(coefParts[0]);
+        }
+    }
+
+    public void MakeStandart()
+    {
+        if (Sign == ComparisonSign.EqualOrGreater)
+        {
+            for (int i = 0; i < Coefficients.Length; i++)
+            {
+                Coefficients[i] *= -1;
+            }
+            RightLimitation *= -1;
+            Sign = ComparisonSign.EqualOrLess;
         }
     }
 
