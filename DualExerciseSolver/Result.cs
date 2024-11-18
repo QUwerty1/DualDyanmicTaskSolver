@@ -4,6 +4,13 @@ namespace DualExerciseSolver;
 
 public class Result
 {
-    public int FunctionResult { get; set; }
-    public int[] X { get; set; } = [];
+    public decimal FunctionResult { get; set; }
+    public decimal[] X { get; set; } = [];
+
+    public Result(decimal functionResult, decimal[] x)
+    {
+        FunctionResult = functionResult;
+        X = x;
+    }
+    public Result() {}
 }
